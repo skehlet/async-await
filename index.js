@@ -21,16 +21,16 @@ async function main() {
         }
     }
 
-    // console.log('in parallel...');
-    // let promises = urls.map(async function (url, index) {
-    //     try {
-    //         const html = await fetchHtml(url);
-    //         await saveHtml(`output${index}.html`, html);
-    //     } catch (err) {
-    //         console.error('ERROR:', err);
-    //     }
-    // });
-    // await Promise.all(promises);
+    console.log('in parallel...');
+    let promises = urls.map(async function (url, index) {
+        try {
+            const html = await fetchHtml(url);
+            await saveHtml(`output${index}.html`, html);
+        } catch (err) {
+            console.error('ERROR:', err);
+        }
+    });
+    await Promise.all(promises);
 
     console.log('all done');
 }
